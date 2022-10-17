@@ -12,21 +12,18 @@ def error_message_maker(input_list, error_index_list):
 
 
 def input_checker(input_list):
-    flag = False
     error_index_list = []
     for i in range(len(input_list)):
         if i % 2 == 0:
             try:
                 int(input_list[i])  # 숫자여야함
             except ValueError:
-                flag = True
                 error_index_list.append(i)
         else:
             if input_list[i] not in ['+', '-', '*', '/']:
-                flag = True
                 error_index_list.append(i)
 
-    return flag, error_message_maker(input_list, error_index_list)
+    return len(error_index_list) > 0, error_message_maker(input_list, error_index_list)
 
 
 def controller(input):
