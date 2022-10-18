@@ -13,6 +13,8 @@ def error_message_maker(input_list, error_index_list):
 
 def input_checker(input_list):
     error_index_list = []
+    if len(input_list) < 3:
+        return True, "Please enter valid input"
     for i in range(len(input_list)):
         if i % 2 == 0:
             try:
@@ -26,6 +28,26 @@ def input_checker(input_list):
     return len(error_index_list) > 0, error_message_maker(input_list, error_index_list)
 
 
+def calculate_mul_div(input_list):
+    # loop * / 처리 루프
+    # list [ 1 + 2 - [3 * 4] / 5  ]
+    # list [ 1 + 2 - [12 / 5] ]
+    # list [ 1 + 2 - 2.4 ]
+    mul_div = ['*', '/']
+    while any(element in mul_div for element in input_list):
+        for i in range(len(input_list)):
+            if input_list[i] == '*':
+                input_list[i - 1] = multiply(input_list[i - 1], input_list[i + 1])
+                del input_list[i:i + 2]
+                break
+            elif input_list[i] == '/':
+                input_list[i - 1] = divide(input_list[i - 1], input_list[i + 1])
+                del input_list[i:i + 2]
+                break
+
+    return input_list
+
+
 def controller(input):
     input_list = list(map(str, input.split()))
 
@@ -36,20 +58,9 @@ def controller(input):
     if error:
         return error_message
 
-    # try:
-    #     num1 = int(num1)
-    #     num2 = int(num2)
-    # except ValueError:
-    #     return "Enter a number"
-    #
-    # if sign == '+':
-    #     return add(num1, num2)
-    # elif sign == '-':
-    #     return subtract(num1, num2)
-    # elif sign == '*':
-    #     return multiply(num1, num2)
-    # elif sign == '/':
-    #     try:
-    #         return divide(num1, num2)
-    #     except ZeroDivisionError:
-    #         return "Zero Division Error detected"
+    # + - 처리 루프
+    # list [ [1 + 2] - 2.4 ]
+    # list [ [3 - 2.4] ]
+    # list [ 0.6 ]
+
+    return calculate_mul_div(input_list)

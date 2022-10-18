@@ -47,3 +47,4 @@ Lee jihun
 # Update History
     20221010 - Added basic arithmetic functions   
     20221017 - Added error detection
+    20221018 - Added priority calculation of division and multiplication
