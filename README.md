@@ -18,7 +18,7 @@ Lee jihun
 - Detects Errors in input
 
 # Example Runs
-Manual Stop
+### Manual Stop
 
     Welcome to my Calculator
     This program can execute the operands below
@@ -30,7 +30,7 @@ Manual Stop
     
     Process finished with exit code 0
 
-Error detection example
+### Error detection example
 
     Welcome to my Calculator
     This program can execute the operands below
