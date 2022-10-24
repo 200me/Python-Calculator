@@ -48,6 +48,23 @@ def calculate_mul_div(input_list):
     return input_list
 
 
+def calculate_add_sub(input_list):
+    # mul_div input
+    # while [ '10' '+' '5' ]
+    add_sub = ['+', '-']
+    while any(element in add_sub for element in input_list):
+        for i in range(len(input_list)):
+            if input_list[i] == '+':
+                input_list[i - 1] = add(input_list[i - 1], input_list[i +1])
+                del input_list[i:i + 2]
+                break
+            elif input_list[i] == '-':
+                input_list[i-1] = subtract(input_list[i - 1], input_list[i + 1])
+                del input_list[i:i + 2]
+                break
+
+    return input_list
+
 def controller(input):
     input_list = list(map(str, input.split()))
 
@@ -62,5 +79,4 @@ def controller(input):
     # list [ [1 + 2] - 2.4 ]
     # list [ [3 - 2.4] ]
     # list [ 0.6 ]
-
-    return calculate_mul_div(input_list)
+    return calculate_add_sub(calculate_mul_div(input_list))[0]

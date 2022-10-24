@@ -44,7 +44,20 @@ Lee jihun
     
     Process finished with exit code 0
 
+### Arithmetic calculation example
+        
+    Welcome to my Calculator
+    This program can execute the operands below
+    "+"  "-"  "*"  "/"
+    ex) 1 + 2 - 3 * 4 / 5
+    If you want to stop, enter "stop" 
+    
+    Enter an equation: 5 + 4 - 3 * 3 / 2
+    Answer = 4.5
+    Enter an equation: 
+
 # Update History
     20221010 - Added basic arithmetic functions   
     20221017 - Added error detection
     20221018 - Added priority calculation of division and multiplication
+    20221024 - Added adding and multiplying feature
